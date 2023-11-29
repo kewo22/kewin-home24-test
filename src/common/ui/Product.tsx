@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
 
 export default function Product() {
   return (
-    <div>product</div>
-  )
+    <div>
+      <img src="./chair.webp" alt="product-chair" height={400} width={400} />
+      <p>Tripod Stabilo floor lamp</p>
+    </div>
+  );
 }

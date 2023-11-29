@@ -19,9 +19,9 @@ export default function Navigation() {
       </div>
     );
   };
-
+  // py-5 px-5 sm:p-5 sm:py-8 md:px-20 lg:px-32
   return (
-    <nav className="py-5 px-5 sm:p-5 sm:py-8 md:px-20 lg:px-32 flex flex-col gap-5 sm:gap-0 border-b border-b-slate-300">
+    <nav className="py-5 px-10 lg:px-12 xl:px-20 2xl:px-44 flex flex-col gap-5 sm:gap-0 border-b border-b-slate-300">
       <div className="flex flex-row justify-between gap-6 lg:gap-10 xl:gap-28">
         <div className="flex flex-row items-center gap-2">
           <Button variant="outline">
