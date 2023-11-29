@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-badge::after {
+  content: attr(data-value);
+  width: 20px;
+  height: 20px;
+  border-radius: 9999999999px;
+  background-color: theme('colors.primary');
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: theme('colors.white');
+}
+
+
+
+
+
+
+
+
+/* 
+
+.page {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 160px auto auto;
+    grid-template-areas:
+      'header header header'
+      'sidebar content content'
+      'footer footer footer';
+    margin: 6px;
+  }
+  
+  .page > * {
+    padding: 10px;
+  }
+  
+  .header {
+    grid-area: header;
+    background-color: lightblue;
+  }
+  
+  .header input {
+    float: right;
+  }
+  
+  .sidebar {
+    grid-area: sidebar;
+    background-color: lavender;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 0 0 0 8px;
+    padding: 8px 0;
+  }
+  
+  .content {
+    grid-area: content;
+    grid-column: span 2;
+  }
+  
+  .footer {
+    grid-area: footer;
+    background-color: lightblue;
+    text-align: center;
+  }
+  
+  .articles {
+    display: grid;
+    grid-gap: 26px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+  }
+  
+  .article {
+    border: 1px solid lavenderblush;
+    padding: 10px;
+  }
+  
+  .article > * {
+    display: inline-block;
+    padding: 4px 0;
+    margin: 4px 0;
+    width: 100%;
+  }
+  
+  .article > section[role="button"] {
+    padding: .2em;
+    background-color: lightgoldenrodyellow;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    text-align: center;
+  }
+   */
