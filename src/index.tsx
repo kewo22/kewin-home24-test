@@ -18,19 +18,16 @@ const router = createBrowserRouter([
     // loader: teamLoader,
     children: [
       {
-        path: "child",
-        index: true,
+        path: "/",
         // element: <Child />,
         async lazy() {
-          let Child = await import("./Child");
-          return { Component: Child.default };
+          let Home = await import("./pages/home/Home");
+          return { Component: Home.default };
         },
-        // loader: teamLoader,
       },
       {
         path: "p",
         element: <PLP />,
-        // loader: teamLoader,
       },
     ],
   },

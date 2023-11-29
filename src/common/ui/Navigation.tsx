@@ -11,7 +11,7 @@ import Button from "./atom/Button";
 export default function Navigation() {
   const SearchInput = () => {
     return (
-      <div className="border border-slate-300 flex flex-row  rounded-full h-12 p-1">
+      <div className="border border-slate-300 flex flex-row rounded-full h-12 p-1">
         <input type="text" className="w-full outline-none rounded-full pl-3" />
         <button className="h-full rounded-full w-11 flex items-center justify-center bg-primary">
           <Search size={18} color="#ffffff" />
@@ -22,7 +22,7 @@ export default function Navigation() {
 
   return (
     <nav className="py-5 px-5 sm:p-5 sm:py-8 md:px-20 lg:px-32 flex flex-col gap-5 sm:gap-0 border-b border-b-slate-300">
-      <div className="flex flex-row justify-between gap-5">
+      <div className="flex flex-row justify-between gap-6 lg:gap-10 xl:gap-28">
         <div className="flex flex-row items-center gap-2">
           <Button variant="outline">
             <Menu size={28} />
@@ -33,18 +33,21 @@ export default function Navigation() {
           <SearchInput />
         </div>
         <div className="flex flex-row items-center gap-5">
-          <Button customClass="p-0" icon={<User size={28} />}></Button>
-
           <Button
-            badgeValue="1"
             customClass="p-0"
-            icon={<Heart size={28} />}
+            icon={<User size={28} absoluteStrokeWidth={true} />}
           ></Button>
 
           <Button
             badgeValue="1"
             customClass="p-0"
-            icon={<ShoppingCart size={28} />}
+            icon={<Heart size={28} absoluteStrokeWidth={true} />}
+          ></Button>
+
+          <Button
+            badgeValue="1"
+            customClass="p-0"
+            icon={<ShoppingCart size={28} absoluteStrokeWidth={true} />}
           ></Button>
         </div>
       </div>
