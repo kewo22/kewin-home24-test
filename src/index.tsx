@@ -41,6 +41,13 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: "/shopping-cart",
+        async lazy() {
+          let Cart = await import("./pages/cart/Cart");
+          return { Component: Cart.default };
+        },
+      },
+      {
         path: "p",
         element: <PLP />,
       },
