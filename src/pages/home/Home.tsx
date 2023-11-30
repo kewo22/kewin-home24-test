@@ -16,7 +16,7 @@ const GET_DOGS = gql`
           urlPath
         }
       }
-      categoryArticles: articlesList(first: 50) {
+      categoryArticles: articlesList(first: 1) {
         articles {
           name
           variantName
