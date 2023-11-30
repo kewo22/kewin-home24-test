@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Category, Article } from './types';
-import './ProductList.css';
+import { Category, Article } from "./types";
+import "./ProductList.css";
 
-var intlNumberFormatValues = ['de-DE', 'currency', 'EUR'];
+var intlNumberFormatValues = ["de-DE", "currency", "EUR"];
+
+
 
 export var formatter = new Intl.NumberFormat(intlNumberFormatValues[0], {
   style: intlNumberFormatValues[1],
@@ -16,13 +18,13 @@ type State = {
 
 export var ArticleCard = ({ article }: { article: Article }) => {
   return (
-    <div className={'article'}>
+    <div className={"article"}>
       <img src={article.images[0].path} />
       <div>{article.name}</div>
       <div>{formatter.format(article.prices.regular.value / 100)}</div>
       <section role="button">Add to cart</section>
     </div>
-  )
+  );
 };
 
 class ArticleList extends React.Component {
@@ -33,11 +35,12 @@ class ArticleList extends React.Component {
   componentDidMount() {
     var xhr = new XMLHttpRequest();
 
-    xhr.open('POST', '/graphql');
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.open("POST", "/graphql");
+    xhr.setRequestHeader("Content-Type", "application/json");
 
-    xhr.send(JSON.stringify({
-      query: `{
+    xhr.send(
+      JSON.stringify({
+        query: `{
         categories: productLists(ids: "156126", locale: de_DE) {
           name
           articleCount
@@ -69,7 +72,8 @@ class ArticleList extends React.Component {
           }
         }
       }`,
-    }));
+      })
+    );
 
     xhr.onload = () => {
       if (xhr.status === 200) {
@@ -77,7 +81,51 @@ class ArticleList extends React.Component {
 
         this.setState({ categories: response.data.categories });
       }
-    }
+    };
+
+    // fetch("/graphql", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     query: `{
+    //     categories: productLists(ids: "156126", locale: de_DE) {
+    //       name
+    //       articleCount
+    //       childrenCategories: childrenProductLists {
+    //         list {
+    //           name
+    //           urlPath
+    //         }
+    //       }
+    //       categoryArticles: articlesList(first: 50) {
+    //         articles {
+    //           name
+    //           variantName
+    //           prices {
+    //             currency
+    //             regular {
+    //               value
+    //             }
+    //           }
+    //           images(
+    //             format: WEBP
+    //             maxWidth: 200
+    //             maxHeight: 200
+    //             limit: 1
+    //           ) {
+    //             path
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }`,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => console.log("1", data))
+    //   .catch((error) => console.error(error));
   }
 
   render() {
@@ -88,43 +136,46 @@ class ArticleList extends React.Component {
     });
 
     return (
-      <div className={'page'}>
-        <div className={'header'}>
+      <div className={"page"}>
+        <div className={"header"}>
           <strong>home24</strong>
-          <input placeholder={'Search'} />
+          <input placeholder={"Search"} />
         </div>
 
-        <div className={'sidebar'}>
+        <div className={"sidebar"}>
           <h3>Kategorien</h3>
           {this.state.categories.length ? (
             <ul>
-              {this.state.categories[0].childrenCategories.list.map(({ name, urlPath }) => {
-                return (
-                  <li>
-                    <a href={`/${urlPath}`}>{name}</a>
-                  </li>
-                );
-              })}
+              {this.state.categories[0].childrenCategories.list.map(
+                ({ name, urlPath }) => {
+                  return (
+                    <li>
+                      <a href={`/${urlPath}`}>{name}</a>
+                    </li>
+                  );
+                }
+              )}
             </ul>
           ) : (
-            'Loading...'
+            "Loading..."
           )}
         </div>
 
-        <div className={'content'}>
+        <div className={"content"}>
           {this.state.categories.length ? (
             <h1>
               {this.state.categories[0].name}
               <small> ({this.state.categories[0].articleCount})</small>
             </h1>
           ) : (
-            'Loading...'
+            "Loading..."
           )}
-          <div className={'articles'}>{articles}</div>
+          <div className={"articles"}>{articles}</div>
         </div>
 
-        <div className={'footer'}>
-          Alle Preise sind in Euro (€) inkl. gesetzlicher Umsatzsteuer und Versandkosten.
+        <div className={"footer"}>
+          Alle Preise sind in Euro (€) inkl. gesetzlicher Umsatzsteuer und
+          Versandkosten.
         </div>
       </div>
     );
