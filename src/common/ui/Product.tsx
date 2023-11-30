@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Article } from "../../types";
 import Button from "./atom/Button";
@@ -12,6 +12,18 @@ export default function Product(props: ProductProps) {
   const { article } = props;
 
   const { app, setApp } = useContext(AppContext);
+
+  const [cartBtnText, setBtnText] = useState("Add to cart");
+
+  useEffect(() => {
+    const foundIndex = app.cartItems.findIndex((cartItem) => {
+      return cartItem.name === article.name;
+    });
+
+    foundIndex === -1
+      ? setBtnText("Add to cart")
+      : setBtnText("Remove from cart");
+  }, [app, article.name]);
 
   const onHeartClick = (article: Article) => {
     const existingWishlists = [...app.wishList];
@@ -49,6 +61,7 @@ export default function Product(props: ProductProps) {
     });
 
     if (index === -1) {
+      setBtnText("Remove from cart");
       setApp({
         ...app,
         cartItems: [...app.cartItems, article],
@@ -56,6 +69,7 @@ export default function Product(props: ProductProps) {
       return;
     }
 
+    setBtnText("Add from cart");
     existingCartItems.splice(index, 1);
     setApp({
       ...app,
@@ -84,10 +98,12 @@ export default function Product(props: ProductProps) {
         ></span>
       </button>
       <img src={article.images[0].path} alt={`img-${article.name}`} />
-      <p className="text-lg font-bold">{article.name}</p>
-      <span className="block text-base font-bold">
-        {article.prices.currency} {article.prices.regular.value}
-      </span>
+      <div className="flex-grow flex flex-col gap-2">
+        <span className="block text-base 2xl:text-xl font-bold text-center">
+          {article.prices.currency} {article.prices.regular.value}
+        </span>
+        <p className="text-base 2xl:text-xl text-center">{article.name}</p>
+      </div>
       <Button
         variant="primary"
         size="xs"
@@ -95,7 +111,7 @@ export default function Product(props: ProductProps) {
           onAddToCartClick(article);
         }}
       >
-        Add to cart
+        {cartBtnText}
       </Button>
     </article>
   );

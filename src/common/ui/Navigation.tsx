@@ -66,7 +66,7 @@ export default function Navigation() {
             <Menu size={28} />
           </Button>
 
-          <Link to="/" className="text-2xl">
+          <Link to="/" className="text-sm sm:text-base lg:text-2xl">
             HOME <span className="text-primary font-bold">24</span>
           </Link>
         </div>
@@ -75,16 +75,16 @@ export default function Navigation() {
         </div>
         <div className="flex flex-row items-center gap-5">
           <Button customClass="p-0">
-            <span className="icon-user text-4xl"></span>
+            <span className="icon-user text-xl lg:text-4xl"></span>
           </Button>
 
           <Link to="/wishlist" className="relative">
-            <span className="icon-heart text-4xl" ref={wishListRef}></span>
+            <span className="icon-heart text-xl lg:text-4xl" ref={wishListRef}></span>
           </Link>
 
           <Link to="/shopping-cart" className="relative">
             <span
-              className="icon-shopping-cart text-4xl"
+              className="icon-shopping-cart text-xl lg:text-4xl"
               ref={shoppingCartRef}
             ></span>
           </Link>
