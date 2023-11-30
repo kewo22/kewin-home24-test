@@ -12,6 +12,7 @@ export type App = {
   categories: ChildCategory | null;
   articles: Article[];
   wishList: Article[];
+  cartItems: Article[];
 };
 
 export interface AppContextInterface {
@@ -38,6 +39,7 @@ export default function AppProvider({ children }: AppProviderProps) {
     categories: null,
     articles: [],
     wishList: [],
+    cartItems: [],
   });
 
   return (
