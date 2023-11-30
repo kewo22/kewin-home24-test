@@ -39,7 +39,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
   let className = "";
   // let iconClass = "";
   const disabledClass =
-    "disabled:bg-slate-900 disabled:cursor-default disabled:text-white/50";
+    "disabled:bg-slate-900 disabled:cursor-default disabled:text-white/50 rounded-md";
 
   switch (size) {
     case "xs":

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~lucide-static/font/lucide.css';
+
 body {
   color: theme("colors.text.primary");
 }

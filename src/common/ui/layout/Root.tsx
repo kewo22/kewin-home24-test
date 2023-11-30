@@ -7,7 +7,7 @@ import { gql, useQuery } from "@apollo/client";
 import SideNavigation from "../SideNavigation";
 import Navigation from "../Navigation";
 import { AppContext } from "../../../context/AppContext";
-import { ChildCategory } from "../../interfaces/article";
+import { Article, ChildCategory } from "../../interfaces/article";
 
 const GET_ARTICLES = gql`
   query GetArticles {
@@ -20,7 +20,7 @@ const GET_ARTICLES = gql`
           urlPath
         }
       }
-      categoryArticles: articlesList(first: 1) {
+      categoryArticles: articlesList(first: 10) {
         articles {
           name
           variantName
@@ -42,13 +42,9 @@ const GET_ARTICLES = gql`
 export default function Root() {
   //   const { showBoundary } = useErrorBoundary();
   const { loading, error, data } = useQuery(GET_ARTICLES);
-  console.log(
-    "🚀 ~ file: root.tsx:43 ~ Root ~ data:",
-    data?.categories[0].childrenCategories.list
-  );
 
   const { app, setApp } = useContext(AppContext);
-
+  console.log();
   // if (
   //   data &&
   //   data.categories[0] &&
@@ -65,6 +61,7 @@ export default function Root() {
     setApp({
       ...app,
       categories: data?.categories[0].childrenCategories as ChildCategory,
+      articles: data?.categories[0].categoryArticles.articles as Article[],
     });
   }, [data]);
 

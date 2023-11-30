@@ -9,7 +9,6 @@ import Button from "./atom/Button";
 
 export default function SideNavigation() {
   const { app, setApp } = useContext(AppContext);
-  console.log("🚀 ~ file: SideNavigation.tsx:12 ~ SideNavigation ~ app:", app);
 
   const baseClass =
     "fixed z-50 h-[100dvh] w-[500px] flex flex-col bg-white top-0 left-0 shadow-2xl overflow-hidden transition-all ease-out duration-500";

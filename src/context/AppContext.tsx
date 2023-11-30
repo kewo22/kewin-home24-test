@@ -5,10 +5,13 @@ import React, {
   useState,
 } from "react";
 import { ChildCategory } from "../common/interfaces/article";
+import { Article } from "../types";
 
 export type App = {
   isSideNavOpen: boolean;
   categories: ChildCategory | null;
+  articles: Article[];
+  wishList: Article[];
 };
 
 export interface AppContextInterface {
@@ -33,6 +36,8 @@ export default function AppProvider({ children }: AppProviderProps) {
   const [app, setApp] = useState<App>({
     isSideNavOpen: false,
     categories: null,
+    articles: [],
+    wishList: [],
   });
 
   return (
