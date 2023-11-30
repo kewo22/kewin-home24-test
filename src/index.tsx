@@ -34,6 +34,13 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: "/wishlist",
+        async lazy() {
+          let WishList = await import("./pages/wishlist/Wishlist");
+          return { Component: WishList.default };
+        },
+      },
+      {
         path: "p",
         element: <PLP />,
       },

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Categories() {
   return (
-    <div className="hidden lg:flex flex-row items-center justify-between px-10 lg:px-12 xl:px-20 2xl:px-44 border-b border-b-slate-300">
+    <section className="hidden lg:flex flex-row items-center justify-between px-10 lg:px-12 xl:px-20 2xl:px-44 border-b border-b-slate-300">
       <a
         className="font-bold text-sm xl:text-base 2xl:text-lg grid place-items-center h-12 xl:h-20 border-b-4 border-b-primary"
         href="//d"
@@ -81,6 +81,6 @@ export default function Categories() {
       >
         Sale
       </a>
-    </div>
+    </section>
   );
 }

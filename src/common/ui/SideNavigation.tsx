@@ -33,7 +33,9 @@ export default function SideNavigation() {
         <p className="text-3xl">
           HOME <span className="text-primary">24</span>
         </p>
-        <Button icon={<X size={30} />} onClick={onCloseClick} />
+        <Button onClick={onCloseClick}>
+          <span className="icon-x text-4xl"></span>
+        </Button>
       </div>
       <div className="flex-grow overflow-y-auto p-10 flex flex-col gap-5">
         {app.categories?.list.map((category, i) => {

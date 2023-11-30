@@ -8,8 +8,8 @@ export interface ButtonProps
   size?: "xs" | "sm" | "md" | "lg";
   variant?: "outline" | "primary";
   badgeValue?: string;
-  icon?: any;
-  idDisabled?: boolean;
+  // icon?: any;
+  // idDisabled?: boolean;
   onClick?: () => void;
 }
 
@@ -19,21 +19,21 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
     customClass = "",
     variant = "",
     size = "xs",
-    badgeValue = "",
-    icon,
+    // badgeValue = "",
+    // icon,
     idDisabled = false,
   } = props;
 
   const { onClick } = props;
 
-  const btnContentRef = useRef<HTMLSpanElement | null>(null);
+  // const btnContentRef = useRef<HTMLSpanElement | null>(null);
 
-  useEffect(() => {
-    if (badgeValue && btnContentRef && btnContentRef.current) {
-      btnContentRef.current.classList.add("btn-badge");
-      btnContentRef.current.setAttribute("data-value", badgeValue);
-    }
-  }, [badgeValue]);
+  // useEffect(() => {
+  //   if (badgeValue && btnContentRef && btnContentRef.current) {
+  //     btnContentRef.current.classList.add("btn-badge");
+  //     btnContentRef.current.setAttribute("data-value", badgeValue);
+  //   }
+  // }, [badgeValue]);
 
   const baseClass = "relative w-fit";
   let className = "";
@@ -83,17 +83,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
     customClass
   );
 
-  if (badgeValue) {
-    return (
-      <button className={mergedClassName} disabled={idDisabled} ref={ref}>
-        <span ref={btnContentRef} className="relative flex flex-row">
-          {/* {icon && <span className={iconClass}>{icon}</span>} */}
-          {icon && icon}
-          {children}
-        </span>
-      </button>
-    );
-  }
+  // if (badgeValue) {
+  //   return (
+  //     <button className={mergedClassName} disabled={idDisabled} ref={ref}>
+  //       <span ref={btnContentRef} className="relative flex flex-row">
+  //         {/* {icon && <span className={iconClass}>{icon}</span>} */}
+  //         {icon && icon}
+  //         {children}
+  //       </span>
+  //     </button>
+  //   );
+  // }
 
   return (
     <button
@@ -104,7 +104,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
     >
       <span className="relative flex flex-row">
         {/* {icon && <span className={iconClass}>{icon}</span>} */}
-        {icon && icon}
+        {/* {icon && icon} */}
         {children}
       </span>
     </button>
