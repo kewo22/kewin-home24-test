@@ -3,11 +3,7 @@ import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import "./index.css";
 // import ProductList from "./ProductList";
@@ -15,6 +11,7 @@ import ErrorPage from "./error-page";
 import Fallback from "./error-fallback";
 import PLP from "./ProductList";
 import Root from "./common/ui/layout/Root";
+import AppProvider from "./context/AppContext";
 
 const apolloClient = new ApolloClient({
   uri: "/graphql",
@@ -53,18 +50,17 @@ const router = createBrowserRouter([
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={apolloClient}>
-      {/* <ProductList /> */}
-      {/* <ErrorBoundary
+    {/* <ErrorBoundary
       FallbackComponent={Fallback}
-      onReset={() => {
-        // reset the state of your app here
-      }}
+      onReset={() => {}}
       resetKeys={["someKey"]}
     > */}
-      <RouterProvider router={router} />
-      {/* </ErrorBoundary> */}
-    </ApolloProvider>
+    <AppProvider>
+      <ApolloProvider client={apolloClient}>
+        <RouterProvider router={router} />
+      </ApolloProvider>
+    </AppProvider>
+    {/* </ErrorBoundary> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

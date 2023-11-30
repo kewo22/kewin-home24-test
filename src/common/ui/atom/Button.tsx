@@ -1,15 +1,16 @@
 import React, { forwardRef, useEffect, useRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { IconNode, icons, LucideIcon, LucideProps } from "lucide-react";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   customClass?: string;
   size?: "xs" | "sm" | "md" | "lg";
-  variant?: "outline";
+  variant?: "outline" | "primary";
   badgeValue?: string;
   icon?: any;
+  idDisabled?: boolean;
+  onClick?: () => void;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
@@ -20,7 +21,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
     size = "xs",
     badgeValue = "",
     icon,
+    idDisabled = false,
   } = props;
+
+  const { onClick } = props;
 
   const btnContentRef = useRef<HTMLSpanElement | null>(null);
 
@@ -39,11 +43,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
 
   switch (size) {
     case "xs":
-      className = twMerge("px-2 py-2 text-xs");
+      className = twMerge("px-2 py-2 text-xs sm:text-base");
       // iconClass = "scale-90 sm:scale-95";
       break;
     case "sm":
-      className = twMerge("px-5 py-3 text-sm");
+      className = twMerge("px-5 py-3 text-sm sm:text-base");
       // iconClass = "scale-95 sm:scale-100";
       break;
     case "md":
@@ -64,6 +68,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
     case "outline":
       className = twMerge(className, "bg-transparent border border-slate-300");
       break;
+    case "primary":
+      className = twMerge(
+        className,
+        "bg-primary text-white border border-slate-300"
+      );
+      break;
   }
 
   const mergedClassName = twMerge(
@@ -75,7 +85,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
 
   if (badgeValue) {
     return (
-      <button className={mergedClassName} ref={ref}>
+      <button className={mergedClassName} disabled={idDisabled} ref={ref}>
         <span ref={btnContentRef} className="relative flex flex-row">
           {/* {icon && <span className={iconClass}>{icon}</span>} */}
           {icon && icon}
@@ -86,7 +96,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
   }
 
   return (
-    <button className={mergedClassName} ref={ref}>
+    <button
+      className={mergedClassName}
+      onClick={onClick}
+      disabled={idDisabled}
+      ref={ref}
+    >
       <span className="relative flex flex-row">
         {/* {icon && <span className={iconClass}>{icon}</span>} */}
         {icon && icon}
