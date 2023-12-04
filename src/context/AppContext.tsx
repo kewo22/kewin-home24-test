@@ -23,13 +23,17 @@ export interface AppContextInterface {
 const defaultState = {
   app: {
     isSideNavOpen: false,
+    categories: null,
+    articles: [],
+    wishList: [],
+    cartItems: [],
   },
   setApp: (state: App) => {},
 } as AppContextInterface;
 
 export const AppContext = createContext<AppContextInterface>(defaultState);
 
-type AppProviderProps = {
+export type AppProviderProps = {
   children: React.ReactNode;
 };
 

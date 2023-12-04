@@ -10,6 +10,7 @@ export interface ButtonProps
   badgeValue?: string;
   // icon?: any;
   // idDisabled?: boolean;
+  testid?: string;
   onClick?: () => void;
 }
 
@@ -19,6 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
     customClass = "",
     variant = "",
     size = "xs",
+    testid = "",
     // badgeValue = "",
     // icon,
     idDisabled = false,
@@ -100,6 +102,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props: any, ref) => {
       className={mergedClassName}
       onClick={onClick}
       disabled={idDisabled}
+      data-testid={testid}
       ref={ref}
     >
       <span className="relative flex flex-row">

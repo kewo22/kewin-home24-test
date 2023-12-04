@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { Menu, Search } from "lucide-react";
@@ -8,13 +8,16 @@ import { ShoppingCart } from "lucide-react";
 import { AppContext } from "../../context/AppContext";
 
 import Button from "./atom/Button";
+import { BreakPoint, useGetBreakpoint } from "../hooks/useGetBreakpoint";
 
 export default function Navigation() {
   const { app, setApp } = useContext(AppContext);
-  console.log("🚀 ~ file: navigation.tsx:14 ~ Navigation ~ app:", app);
+  console.log("🚀 ~ file: Navigation.tsx:15 ~ Navigation ~ app:", app);
 
   const wishListRef = useRef<HTMLSpanElement | null>(null);
   const shoppingCartRef = useRef<HTMLSpanElement | null>(null);
+
+  const { breakpoint } = useGetBreakpoint();
 
   if (shoppingCartRef && shoppingCartRef.current) {
     if (app.cartItems.length) {
@@ -50,7 +53,11 @@ export default function Navigation() {
   const SearchInput = () => {
     return (
       <div className="border border-slate-300 flex flex-row rounded-full h-12 p-1">
-        <input type="text" className="w-full outline-none rounded-full pl-3" />
+        <input
+          type="text"
+          className="w-full outline-none rounded-full pl-3"
+          data-testid="search-input"
+        />
         <button className="h-full rounded-full w-11 flex items-center justify-center bg-primary">
           <Search size={18} color="#ffffff" />
         </button>
@@ -62,38 +69,53 @@ export default function Navigation() {
     <nav className="py-5 px-10 lg:px-12 xl:px-20 2xl:px-44 flex flex-col gap-5 sm:gap-0 border-b border-b-slate-300">
       <div className="flex flex-row justify-between gap-6 lg:gap-10 xl:gap-28">
         <div className="flex flex-row items-center gap-4">
-          <Button variant="outline" onClick={onMenuClick}>
+          <Button variant="outline" onClick={onMenuClick} testid="menu-btn">
             <Menu size={28} />
           </Button>
 
-          <Link to="/" className="text-sm sm:text-base lg:text-2xl">
+          <Link
+            to="/"
+            className="text-sm sm:text-base lg:text-2xl"
+            data-testid="logo"
+          >
             HOME <span className="text-primary font-bold">24</span>
           </Link>
         </div>
         <div className="flex-grow hidden sm:block">
-          <SearchInput />
+          {breakpoint !== BreakPoint.SM && <SearchInput />}
         </div>
         <div className="flex flex-row items-center gap-5">
-          <Button customClass="p-0">
+          <Button customClass="p-0" testid="user-btn">
             <span className="icon-user text-xl lg:text-4xl"></span>
           </Button>
 
-          <Link to="/wishlist" className="relative">
-            <span className="icon-heart text-xl lg:text-4xl" ref={wishListRef}></span>
+          <Link to="/wishlist" className="relative" data-testid="wishlist-btn">
+            <span
+              className="icon-heart text-xl lg:text-4xl"
+              ref={wishListRef}
+              data-testid="wishlist-icon"
+            ></span>
           </Link>
 
-          <Link to="/shopping-cart" className="relative">
+          <Link
+            to="/shopping-cart"
+            className="relative"
+            data-testid="shopping-cart-btn"
+          >
             <span
               className="icon-shopping-cart text-xl lg:text-4xl"
               ref={shoppingCartRef}
+              data-testid="shopping-cart-icon"
             ></span>
           </Link>
         </div>
       </div>
 
-      <div className="block sm:hidden">
-        <SearchInput />
-      </div>
+      {breakpoint === BreakPoint.SM && (
+        <div className="block sm:hidden">
+          <SearchInput />
+        </div>
+      )}
     </nav>
   );
 }

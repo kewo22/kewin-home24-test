@@ -12,6 +12,7 @@ export default function Product(props: ProductProps) {
   const { article } = props;
 
   const { app, setApp } = useContext(AppContext);
+  console.log("🚀 ~ file: Product.tsx:15 ~ Product ~ app:", app)
 
   const [cartBtnText, setBtnText] = useState("Add to cart");
 
@@ -87,16 +88,17 @@ export default function Product(props: ProductProps) {
       key={article.name}
       className="shadow-xl flex flex-col items-center gap-5 p-10 relative"
     >
-      <button
-        className="absolute top-5 right-5"
+      <Button
+        customClass="absolute top-5 right-5"
         onClick={() => {
           onHeartClick(article);
         }}
+        testid="add-to-wishlist-btn"
       >
         <span
           className={`icon-heart text-3xl transition-all ease-in-out duration-200 ${heartIconClass}`}
         ></span>
-      </button>
+      </Button>
       <img src={article.images[0].path} alt={`img-${article.name}`} />
       <div className="flex-grow flex flex-col gap-2">
         <span className="block text-base 2xl:text-xl font-bold text-center">
@@ -110,6 +112,7 @@ export default function Product(props: ProductProps) {
         onClick={() => {
           onAddToCartClick(article);
         }}
+        testid="add-to-cart-btn"
       >
         {cartBtnText}
       </Button>

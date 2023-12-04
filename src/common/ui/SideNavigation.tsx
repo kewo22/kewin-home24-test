@@ -11,7 +11,7 @@ export default function SideNavigation() {
   const { app, setApp } = useContext(AppContext);
 
   const baseClass =
-    "fixed z-50 h-full w-[350px] sm:w-[400px] xl:w-[500px] flex flex-col bg-white top-0 left-0  overflow-hidden transition-all ease-out duration-500";
+    "fixed z-50 h-full w-[350px] sm:w-[400px] xl:w-[500px] flex flex-col bg-white top-0 left-0 overflow-hidden transition-all ease-out duration-500";
   let visibilityClass = "-left-[350px] sm:-left-[400px] xl:-left-[500px]";
 
   const onCloseClick = () => {
@@ -28,12 +28,12 @@ export default function SideNavigation() {
   const mergedClassName = twMerge(baseClass, visibilityClass);
 
   return (
-    <aside className={mergedClassName}>
+    <aside className={mergedClassName} data-testid="side-nav">
       <div className="p-10 flex flex-row items-center justify-between shad">
         <p className="text-3xl">
           HOME <span className="text-primary">24</span>
         </p>
-        <Button onClick={onCloseClick}>
+        <Button onClick={onCloseClick} testid="side-nav-close-btn">
           <span className="icon-x text-4xl"></span>
         </Button>
       </div>
