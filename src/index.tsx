@@ -47,11 +47,13 @@ const router = createBrowserRouter([
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <ErrorBoundary fallback={<p>Error occurred.</p>}> */}
     <AppProvider>
       <ApolloProvider client={apolloClient}>
         <RouterProvider router={router} />
       </ApolloProvider>
     </AppProvider>
+    {/* </ErrorBoundary> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

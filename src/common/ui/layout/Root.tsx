@@ -40,7 +40,6 @@ const GET_ARTICLES = gql`
 `;
 
 export default function Root() {
-  //   const { showBoundary } = useErrorBoundary();
   const { app, setApp } = useContext(AppContext);
 
   const { loading, error } = useQuery(GET_ARTICLES, {
