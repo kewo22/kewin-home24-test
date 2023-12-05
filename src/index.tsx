@@ -6,7 +6,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import "./index.css";
-// import ProductList from "./ProductList";
 import ErrorPage from "./error-page";
 import Fallback from "./error-fallback";
 import Root from "./common/ui/layout/Root";
