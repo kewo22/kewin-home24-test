@@ -6,7 +6,6 @@ import Products from "../../common/ui/Products";
 
 export default function Home() {
   const { app } = useContext(AppContext);
-  console.log("🚀 ~ file: Home.tsx:9 ~ Home ~ app:", app.articles);
 
   return (
     <section>

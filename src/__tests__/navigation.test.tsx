@@ -3,10 +3,10 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 
 import AppProvider from "../context/AppContext";
+import { Article } from "../common/interfaces/article";
 
 import Navigation from "../common/ui/Navigation";
 import Product from "../common/ui/Product";
-import { Article } from "../common/interfaces/article";
 
 describe("Navigation Component", () => {
   beforeAll(() => {

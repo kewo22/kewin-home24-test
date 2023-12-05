@@ -12,7 +12,7 @@ export default function Product(props: ProductProps) {
   const { article } = props;
 
   const { app, setApp } = useContext(AppContext);
-  console.log("🚀 ~ file: Product.tsx:15 ~ Product ~ app:", app)
+  console.log("🚀 ~ file: Product.tsx:15 ~ Product ~ app:", app);
 
   const [cartBtnText, setBtnText] = useState("Add to cart");
 
@@ -87,6 +87,7 @@ export default function Product(props: ProductProps) {
     <article
       key={article.name}
       className="shadow-xl flex flex-col items-center gap-5 p-10 relative"
+      data-testid="product-article"
     >
       <Button
         customClass="absolute top-5 right-5"
@@ -99,12 +100,24 @@ export default function Product(props: ProductProps) {
           className={`icon-heart text-3xl transition-all ease-in-out duration-200 ${heartIconClass}`}
         ></span>
       </Button>
-      <img src={article.images[0].path} alt={`img-${article.name}`} />
+      <img
+        src={article.images[0].path}
+        alt={`img-${article.name}`}
+        data-testid="article-image"
+      />
       <div className="flex-grow flex flex-col gap-2">
-        <span className="block text-base 2xl:text-xl font-bold text-center">
+        <span
+          className="block text-base 2xl:text-xl font-bold text-center"
+          data-testid="article-currency-value"
+        >
           {article.prices.currency} {article.prices.regular.value}
         </span>
-        <p className="text-base 2xl:text-xl text-center">{article.name}</p>
+        <p
+          className="text-base 2xl:text-xl text-center"
+          data-testid="article-name"
+        >
+          {article.name}
+        </p>
       </div>
       <Button
         variant="primary"
