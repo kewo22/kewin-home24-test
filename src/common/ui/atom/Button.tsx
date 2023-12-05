@@ -7,7 +7,6 @@ export interface ButtonProps
   customClass?: string;
   size?: "xs" | "sm" | "md" | "lg";
   variant?: "outline" | "primary";
-  badgeValue?: string;
   testid?: string;
   onClick?: () => void;
 }
