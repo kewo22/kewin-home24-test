@@ -23,21 +23,19 @@ const article: Article = {
 };
 
 describe("Article Component", () => {
-  beforeAll(() => {
-    it("should render product details", async () => {
-      render(<Product article={article} />);
+  it("should render product details", async () => {
+    render(<Product article={article} />);
 
-      const articleImage = screen.getByTestId(
-        "article-image"
-      ) as HTMLImageElement;
-      const articleCurrencyValue = screen.getByTestId("article-currency-value");
-      const articleName = screen.getByTestId("article-name");
+    const articleImage = screen.getByTestId(
+      "article-image"
+    ) as HTMLImageElement;
+    const articleCurrencyValue = screen.getByTestId("article-currency-value");
+    const articleName = screen.getByTestId("article-name");
 
-      expect(articleImage.src).toBe(article.images[0].path);
-      expect(articleCurrencyValue.textContent).toBe(
-        `${article.prices.currency} ${article.prices.regular.value}`
-      );
-      expect(articleName.textContent).toBe(article.name);
-    });
+    expect(articleImage.src).toBe(article.images[0].path);
+    expect(articleCurrencyValue.textContent).toBe(
+      `${article.prices.currency} ${article.prices.regular.value}`
+    );
+    expect(articleName.textContent).toBe(article.name);
   });
 });

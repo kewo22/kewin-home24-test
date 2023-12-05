@@ -12,7 +12,6 @@ export default function Product(props: ProductProps) {
   const { article } = props;
 
   const { app, setApp } = useContext(AppContext);
-  console.log("🚀 ~ file: Product.tsx:15 ~ Product ~ app:", app);
 
   const [cartBtnText, setBtnText] = useState("Add to cart");
 

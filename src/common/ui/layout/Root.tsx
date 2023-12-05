@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from "react";
-import { useErrorBoundary } from "react-error-boundary";
+import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 
 import { gql, useQuery } from "@apollo/client";
 
-import SideNavigation from "../SideNavigation";
-import Navigation from "../Navigation";
 import { AppContext } from "../../../context/AppContext";
 import { Article, ChildCategory } from "../../interfaces/article";
+
+import SideNavigation from "../SideNavigation";
+import Navigation from "../Navigation";
 
 const GET_ARTICLES = gql`
   query GetArticles {
@@ -41,29 +41,17 @@ const GET_ARTICLES = gql`
 
 export default function Root() {
   //   const { showBoundary } = useErrorBoundary();
-  const { loading, error, data } = useQuery(GET_ARTICLES);
-
   const { app, setApp } = useContext(AppContext);
-  console.log();
-  // if (
-  //   data &&
-  //   data.categories[0] &&
-  //   data?.categories[0].childrenCategories &&
-  //   data?.categories[0].childrenCategories.list
-  // ) {
-  //   setApp({
-  //     ...app,
-  //     categories: data?.categories[0].childrenCategories.list as ChildCategory,
-  //   });
-  // }
 
-  useEffect(() => {
-    setApp({
-      ...app,
-      categories: data?.categories[0].childrenCategories as ChildCategory,
-      articles: data?.categories[0].categoryArticles.articles as Article[],
-    });
-  }, [data]);
+  const { loading, error } = useQuery(GET_ARTICLES, {
+    onCompleted: (d: any) => {
+      setApp({
+        ...app,
+        categories: d.categories[0].childrenCategories as ChildCategory,
+        articles: d.categories[0].categoryArticles.articles as Article[],
+      });
+    },
+  });
 
   return (
     <div className="font-rubik">

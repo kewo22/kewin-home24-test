@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import { AppContext } from "../../context/AppContext";
+
 import Categories from "../../common/ui/Categories";
 import Products from "../../common/ui/Products";
 

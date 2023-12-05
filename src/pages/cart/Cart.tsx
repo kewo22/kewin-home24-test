@@ -18,7 +18,7 @@ export default function Cart() {
   return (
     <section className="py-20 px-10 lg:px-12 xl:px-20 2xl:px-44">
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-10">
-        {app.cartItems.map((cartItem) => {
+        {app.cartItems?.map((cartItem) => {
           return (
             <Product article={cartItem} key={`wish-list-${cartItem.name}`} />
           );

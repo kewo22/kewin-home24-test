@@ -38,7 +38,7 @@ export default function SideNavigation() {
         </Button>
       </div>
       <div className="flex-grow overflow-y-auto p-10 flex flex-col gap-5">
-        {app.categories?.list.map((category, i) => {
+        {app.categories?.list?.map((category, i) => {
           return (
             <a
               key={`category-${i}`}
