@@ -12,14 +12,19 @@ export default function ErrorPage() {
     }
 
     return (
-      <div id="error-page">
-        <h1>Oops! {error.status}</h1>
-        <p>{error.statusText}</p>
-        {error.data?.message && (
-          <p>
-            <i>{error.data.message}</i>
-          </p>
-        )}
+      <div
+        id="error-page"
+        className="h-screen bg-red-100 flex flex-col items-center justify-center"
+      >
+        <div className="text-center">
+          <h1 className="text-5xl">Oops! {error.status}</h1>
+          <p className="text-2xl my-3">{error.statusText}</p>
+          {error.data?.message && (
+            <p>
+              <i>{error.data.message}</i>
+            </p>
+          )}
+        </div>
       </div>
     );
   } else if (error instanceof Error) {
@@ -35,29 +40,4 @@ export default function ErrorPage() {
   } else {
     return <></>;
   }
-
-  //   const error = useRouteError();
-  //   console.error(error);
-
-  //   const errorMessage = (error: unknown) => {
-  //     if (isRouteErrorResponse(error)) {
-  //       return `${error.status} ${error.statusText}`;
-  //     } else if (error instanceof Error) {
-  //       return error.message;
-  //     } else if (typeof error === "string") {
-  //       return error;
-  //     } else {
-  //       console.error(error);
-  //       return "Unknown error";
-  //     }
-  //   };
-
-  //   return (
-  //     <div id="error-page">
-  //       <h1>Oops!</h1>
-  //       <p>Sorry, an unexpected error has occurred.</p>
-  //       {errorMessage(error)}
-  //       <p>{/* <i>{error.statusText || error.message}</i> */}</p>
-  //     </div>
-  //   );
 }
