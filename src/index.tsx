@@ -9,7 +9,6 @@ import "./index.css";
 // import ProductList from "./ProductList";
 import ErrorPage from "./error-page";
 import Fallback from "./error-fallback";
-import PLP from "./ProductList";
 import Root from "./common/ui/layout/Root";
 import AppProvider from "./context/AppContext";
 
@@ -46,10 +45,6 @@ const router = createBrowserRouter([
           let Cart = await import("./pages/cart/Cart");
           return { Component: Cart.default };
         },
-      },
-      {
-        path: "p",
-        element: <PLP />,
       },
     ],
   },
