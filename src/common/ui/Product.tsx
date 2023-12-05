@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { Article } from "../../types";
-import Button from "./atom/Button";
+import { Article } from "../interfaces/article";
+import { ProductProps } from "../interfaces/props/product-props";
 import { AppContext } from "../../context/AppContext";
 
-interface ProductProps {
-  article: Article;
-}
+import Button from "./atom/Button";
 
 export default function Product(props: ProductProps) {
   const { article } = props;

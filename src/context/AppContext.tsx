@@ -5,8 +5,7 @@ import React, {
   useState,
 } from "react";
 
-import { Article } from "../types";
-import { ChildCategory } from "../common/interfaces/article";
+import { Article, ChildCategory } from "../common/interfaces/article";
 
 export type App = {
   isSideNavOpen: boolean;
