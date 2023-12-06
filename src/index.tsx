@@ -2,18 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 
-import "./index.css";
+import "./common/config/i18";
+import { apolloClient } from "./common/config/apollo";
+
 import ErrorPage from "./error-page";
 import Root from "./common/ui/layout/Root";
 import AppProvider from "./context/AppContext";
 import ReactErrorBoundary from "./ReactErrorBoundary";
 
-const apolloClient = new ApolloClient({
-  uri: "/graphql",
-  cache: new InMemoryCache(),
-});
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -50,13 +49,14 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.render(
+const APP = (
   <React.StrictMode>
     <AppProvider>
       <ApolloProvider client={apolloClient}>
         <RouterProvider router={router} />
       </ApolloProvider>
     </AppProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
+
+ReactDOM.render(APP, document.getElementById("root"));

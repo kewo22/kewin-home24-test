@@ -66,7 +66,7 @@ export default function Categories() {
             to={category.route}
             className="grid place-items-center h-12 xl:h-20 border-b-4 border-transparent hover:border-b-primary"
           >
-            <Typography className="font-bold">{category.category}</Typography>
+            <Typography text={category.category} className="font-bold" />
           </Link>
         );
       })}
