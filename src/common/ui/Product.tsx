@@ -104,13 +104,13 @@ export default function Product(props: ProductProps) {
       />
       <div className="flex-grow flex flex-col gap-2">
         <span
-          className="block text-base 2xl:text-xl font-bold text-center"
+          className="block text-base font-bold text-center"
           data-testid="article-currency-value"
         >
           {article.prices.currency} {article.prices.regular.value}
         </span>
         <p
-          className="text-base 2xl:text-xl text-center"
+          className="text-base text-center"
           data-testid="article-name"
         >
           {article.name}

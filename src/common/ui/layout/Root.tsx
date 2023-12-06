@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import { gql, useQuery } from "@apollo/client";
+import { useErrorBoundary } from "react-error-boundary";
+import { ApolloError, gql, useQuery } from "@apollo/client";
 
 import { AppContext } from "../../../context/AppContext";
 import { Article, ChildCategory } from "../../interfaces/article";
@@ -42,13 +43,18 @@ const GET_ARTICLES = gql`
 export default function Root() {
   const { app, setApp } = useContext(AppContext);
 
-  const { loading, error } = useQuery(GET_ARTICLES, {
+  const { showBoundary } = useErrorBoundary();
+
+  const { loading } = useQuery(GET_ARTICLES, {
     onCompleted: (d: any) => {
       setApp({
         ...app,
         categories: d.categories[0].childrenCategories as ChildCategory,
         articles: d.categories[0].categoryArticles.articles as Article[],
       });
+    },
+    onError: (e: ApolloError) => {
+      showBoundary(e.message);
     },
   });
 

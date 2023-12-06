@@ -1,14 +1,18 @@
 import React from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
-export default function ErrorPage() {
+export default function ErrorPage(props: any) {
   const error = useRouteError();
+  console.log("🚀 ~ file: error-page.tsx:6 ~ ErrorPage ~ error:", error)
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 401) {
       // ...
     } else if (error.status === 404) {
       // ...
+    } else if (error.status === 422) {
+      // ...
+      return <>qwdwqdwqqwdwq</>
     }
 
     return (

@@ -43,7 +43,7 @@ export default function SideNavigation() {
             <a
               key={`category-${i}`}
               href="/s"
-              className="flex flex-row items-center justify-between text-xl"
+              className="flex flex-row items-center justify-between text-base"
             >
               {category.name} <ChevronRight size={30} />
             </a>

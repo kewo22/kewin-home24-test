@@ -8,6 +8,7 @@ import "./index.css";
 import ErrorPage from "./error-page";
 import Root from "./common/ui/layout/Root";
 import AppProvider from "./context/AppContext";
+import ReactErrorBoundary from "./ReactErrorBoundary";
 
 const apolloClient = new ApolloClient({
   uri: "/graphql",
@@ -17,7 +18,11 @@ const apolloClient = new ApolloClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: (
+      <ReactErrorBoundary>
+        <Root />
+      </ReactErrorBoundary>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -47,13 +52,11 @@ const router = createBrowserRouter([
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <ErrorBoundary fallback={<p>Error occurred.</p>}> */}
     <AppProvider>
       <ApolloProvider client={apolloClient}>
         <RouterProvider router={router} />
       </ApolloProvider>
     </AppProvider>
-    {/* </ErrorBoundary> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
