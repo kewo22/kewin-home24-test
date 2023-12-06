@@ -1,86 +1,75 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Typography from "./atom/Typography";
 
 export default function Categories() {
+  const categories = [
+    {
+      category: "Möbel",
+      route: "",
+    },
+    {
+      category: "Lampen",
+      route: "",
+    },
+    {
+      category: "Accessoires",
+      route: "",
+    },
+    {
+      category: "Textilien",
+      route: "",
+    },
+    {
+      category: "Kinder",
+      route: "",
+    },
+    {
+      category: "Küche",
+      route: "",
+    },
+    {
+      category: "Bad",
+      route: "",
+    },
+    {
+      category: "Weihnachten",
+      route: "",
+    },
+    {
+      category: "BUTLERS",
+      route: "",
+    },
+    {
+      category: "Marken",
+      route: "",
+    },
+    {
+      category: "Shop the Look",
+      route: "",
+    },
+    {
+      category: "Store",
+      route: "",
+    },
+    {
+      category: "Sale",
+      route: "",
+    },
+  ];
+
   return (
     <section className="hidden lg:flex flex-row items-center justify-between px-10 lg:px-12 xl:px-20 2xl:px-44 border-b border-b-slate-300">
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-primary"
-        href="/d"
-      >
-        Möbel
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Lampen
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Accessoires
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Textilien
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Kinder
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Küche
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Bad
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Weihnachten
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        BUTLERS
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Marken
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Shop the Look
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Store
-      </a>
-      <a
-        className="font-bold text-sm lg:text-base grid place-items-center h-12 xl:h-20 border-b-4 border-b-transparent"
-        href="/d"
-      >
-        Sale
-      </a>
+      {categories.map((category) => {
+        return (
+          <Link
+            to={category.route}
+            className="grid place-items-center h-12 xl:h-20 border-b-4 border-transparent hover:border-b-primary"
+          >
+            <Typography className="font-bold">{category.category}</Typography>
+          </Link>
+        );
+      })}
     </section>
   );
 }
