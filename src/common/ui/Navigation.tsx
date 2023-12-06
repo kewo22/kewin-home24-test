@@ -90,12 +90,12 @@ export default function Navigation() {
         {/* ICONS */}
         <div className="flex flex-row items-center gap-5">
           <Button customClass="p-0" testid="user-btn">
-            <span className="icon-user text-xl lg:text-4xl"></span>
+            <span className="icon-user text-xl lg:text-2xl"></span>
           </Button>
 
           <Link to="/wishlist" className="relative" data-testid="wishlist-btn">
             <span
-              className="icon-heart text-xl lg:text-4xl"
+              className="icon-heart text-xl lg:text-2xl"
               ref={wishListRef}
               data-testid="wishlist-icon"
             ></span>
@@ -107,7 +107,7 @@ export default function Navigation() {
             data-testid="shopping-cart-btn"
           >
             <span
-              className="icon-shopping-cart text-xl lg:text-4xl"
+              className="icon-shopping-cart text-xl lg:text-2xl"
               ref={shoppingCartRef}
               data-testid="shopping-cart-icon"
             ></span>
