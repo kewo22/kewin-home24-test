@@ -13,6 +13,9 @@ export type App = {
   articles: Article[];
   wishList: Article[];
   cartItems: Article[];
+  isLoading: {
+    articles: boolean;
+  };
 };
 
 export interface AppContextInterface {
@@ -27,6 +30,9 @@ const defaultState = {
     articles: [],
     wishList: [],
     cartItems: [],
+    isLoading: {
+      articles: false,
+    },
   },
   setApp: (state: App) => {},
 } as AppContextInterface;
@@ -38,13 +44,7 @@ export type AppProviderProps = {
 };
 
 export default function AppProvider({ children }: AppProviderProps) {
-  const [app, setApp] = useState<App>({
-    isSideNavOpen: false,
-    categories: null,
-    articles: [],
-    wishList: [],
-    cartItems: [],
-  });
+  const [app, setApp] = useState<App>(defaultState.app);
 
   return (
     <AppContext.Provider value={{ app, setApp }}>

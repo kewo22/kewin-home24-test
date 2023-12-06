@@ -5,7 +5,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import ErrorPage from "./ErrorPage";
 
 export default function ReactErrorBoundary(props: any) {  
-  console.log("🚀 ~ file: ReactErrorBoundary.tsx:8 ~ ReactErrorBoundary ~ props:", props)
   return (
     <ErrorBoundary
       FallbackComponent={ErrorPage}
