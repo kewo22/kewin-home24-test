@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { Menu, Search } from "lucide-react";
-import { User } from "lucide-react";
-import { ShoppingCart } from "lucide-react";
 
 import { AppContext } from "../../context/AppContext";
 
@@ -69,7 +67,12 @@ export default function Navigation() {
       <div className="flex flex-row justify-between gap-6 lg:gap-10 xl:gap-28">
         {/* BRAND */}
         <div className="flex flex-row items-center gap-4">
-          <Button variant="outline" onClick={onMenuClick} testid="menu-btn">
+          <Button
+            variant="outline"
+            onClick={onMenuClick}
+            testid="menu-btn"
+            customClass="text-secondary"
+          >
             <Menu size={28} />
           </Button>
 

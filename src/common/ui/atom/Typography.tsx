@@ -1,9 +1,9 @@
 import React, { ElementType, forwardRef } from "react";
 
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
-type Variant = "span";
+type Variant = "span" | "lg" | "xl";
 
 interface TypographyProps {
   text: string;
@@ -14,21 +14,27 @@ interface TypographyProps {
 
 const tags: Record<Variant, ElementType> = {
   span: "span",
+  lg: "p",
+  xl: "p",
 };
 
 const typographyClasses = {
   span: "text-sm lg:text-base",
+  lg: "text-base lg:text-lg xl:text-xl",
+  xl: "text-base lg:text-xl xl:text-4xl",
 };
 
 const sizes: Record<Variant, string> = {
   span: typographyClasses.span,
+  lg: typographyClasses.lg,
+  xl: typographyClasses.xl
 };
 
 const Typography = forwardRef<HTMLButtonElement, TypographyProps>(
   (props: TypographyProps, ref) => {
     const { variant = "span", className, text } = props;
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const sizeClasses = sizes[variant];
     const Tag = tags[variant];
@@ -36,8 +42,6 @@ const Typography = forwardRef<HTMLButtonElement, TypographyProps>(
 
     return (
       <Tag className={mergedClassName} ref={ref}>
-        {/* {t("wow")} */}
-        {/* <Trans t={t}>Hello World</Trans> */}
         {t(text)}
       </Tag>
     );

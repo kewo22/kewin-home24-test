@@ -52,7 +52,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       case "outline":
         className = twMerge(
           className,
-          "bg-transparent border border-slate-300"
+          "bg-transparent border border-slate-300 text-white"
         );
         break;
       case "primary":

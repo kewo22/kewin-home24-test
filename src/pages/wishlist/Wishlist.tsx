@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import Product from "../../common/ui/Product";
+import Typography from "../../common/ui/atom/Typography";
 
 export default function WishList() {
   const { app } = useContext(AppContext);
 
   if (!app.wishList.length) {
-    // heart-off
     return (
       <section className="flex items-center justify-center mt-52 text-center">
-        <p className="text-2xl lg:text-6xl">Wishlist is empty</p>
+        <Typography text="empty_wishlist" variant="xl"></Typography>
       </section>
     );
   }

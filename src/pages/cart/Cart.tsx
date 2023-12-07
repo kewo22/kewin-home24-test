@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import { AppContext } from "../../context/AppContext";
 import Product from "../../common/ui/Product";
+import Typography from "../../common/ui/atom/Typography";
 
 export default function Cart() {
   const { app } = useContext(AppContext);
@@ -10,7 +11,8 @@ export default function Cart() {
     // heart-off
     return (
       <section className="flex items-center justify-center mt-52 text-center">
-        <p className="text-2xl lg:text-6xl">Cart is empty</p>
+        <Typography text="empty_cart" variant="xl"></Typography>
+
       </section>
     );
   }

@@ -8,11 +8,13 @@ module.exports = {
       },
       backgroundColor: {
         primary: "#f45334",
+        secondary: "#2f3133",
       },
       colors: {
         primary: "#f45334",
+        secondary: "#2f3133",
         text: {
-          primary: "#5b5e61",
+          primary: "#2f3133",
         },
       },
     },

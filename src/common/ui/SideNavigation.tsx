@@ -9,6 +9,7 @@ import Button from "./atom/Button";
 
 export default function SideNavigation() {
   const { app, setApp } = useContext(AppContext);
+  console.log("🚀 ~ file: SideNavigation.tsx:12 ~ SideNavigation ~ app:", app)
 
   const baseClass =
     "fixed z-50 h-full w-[350px] sm:w-[400px] xl:w-[500px] flex flex-col bg-white top-0 left-0 overflow-hidden transition-all ease-out duration-500";
@@ -42,8 +43,8 @@ export default function SideNavigation() {
           return (
             <a
               key={`category-${i}`}
-              href="/s"
-              className="flex flex-row items-center justify-between text-base"
+              href="/"
+              className="flex flex-row items-center justify-between text-base text-secondary"
             >
               {category.name} <ChevronRight size={30} />
             </a>

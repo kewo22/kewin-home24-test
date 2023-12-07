@@ -3,15 +3,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { Article } from "../interfaces/article";
 import { ProductProps } from "../interfaces/props/product-props";
 import { AppContext } from "../../context/AppContext";
+import { useTranslation } from "react-i18next";
 
 import Button from "./atom/Button";
 
 export default function Product(props: ProductProps) {
   const { article } = props;
 
+  const { t } = useTranslation();
+
   const { app, setApp } = useContext(AppContext);
 
-  const [cartBtnText, setBtnText] = useState("Add to cart");
+  const [cartBtnText, setBtnText] = useState("add_to_cart");
 
   useEffect(() => {
     const foundIndex = app.cartItems.findIndex((cartItem) => {
@@ -19,8 +22,8 @@ export default function Product(props: ProductProps) {
     });
 
     foundIndex === -1
-      ? setBtnText("Add to cart")
-      : setBtnText("Remove from cart");
+      ? setBtnText("add_to_cart")
+      : setBtnText("remove_from_cart");
   }, [app, article.name]);
 
   const onHeartClick = (article: Article) => {
@@ -109,10 +112,7 @@ export default function Product(props: ProductProps) {
         >
           {article.prices.currency} {article.prices.regular.value}
         </span>
-        <p
-          className="text-base text-center"
-          data-testid="article-name"
-        >
+        <p className="text-base text-center" data-testid="article-name">
           {article.name}
         </p>
       </div>
@@ -124,7 +124,7 @@ export default function Product(props: ProductProps) {
         }}
         testid="add-to-cart-btn"
       >
-        {cartBtnText}
+        {t(cartBtnText)}
       </Button>
     </article>
   );

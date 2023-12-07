@@ -45,6 +45,7 @@ export default function Home() {
 
   const { loading } = useQuery(GET_ARTICLES, {
     onCompleted: (d: any) => {
+      console.log("🚀 ~ file: Home.tsx:48 ~ Home ~ d:", d)
       setApp({
         ...app,
         categories: d.categories[0].childrenCategories as ChildCategory,

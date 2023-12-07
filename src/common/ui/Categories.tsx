@@ -5,64 +5,61 @@ import Typography from "./atom/Typography";
 export default function Categories() {
   const categories = [
     {
-      category: "Möbel",
+      category: "category_1",
       route: "",
     },
     {
-      category: "Lampen",
+      category: "category_2",
       route: "",
     },
     {
-      category: "Accessoires",
+      category: "category_3",
       route: "",
     },
     {
-      category: "Textilien",
+      category: "category_4",
       route: "",
     },
     {
-      category: "Kinder",
+      category: "category_5",
       route: "",
     },
     {
-      category: "Küche",
+      category: "category_6",
       route: "",
     },
     {
-      category: "Bad",
+      category: "category_7",
       route: "",
     },
     {
-      category: "Weihnachten",
+      category: "category_8",
       route: "",
     },
     {
-      category: "BUTLERS",
+      category: "category_9",
       route: "",
     },
     {
-      category: "Marken",
+      category: "category_10",
       route: "",
     },
     {
-      category: "Shop the Look",
+      category: "category_11",
       route: "",
     },
     {
-      category: "Store",
-      route: "",
-    },
-    {
-      category: "Sale",
+      category: "category_12",
       route: "",
     },
   ];
 
   return (
     <section className="hidden lg:flex flex-row items-center justify-between px-10 lg:px-12 xl:px-20 2xl:px-44 border-b border-b-slate-300">
-      {categories.map((category) => {
+      {categories.map((category, i) => {
         return (
           <Link
+            key={`category-${i}`}
             to={category.route}
             className="grid place-items-center h-12 xl:h-20 border-b-4 border-transparent hover:border-b-primary"
           >
