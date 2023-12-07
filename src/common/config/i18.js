@@ -41,7 +41,7 @@ i18n.use(initReactI18next).init({
         category_9: "Marken",
         category_10: "Shop the Look",
         category_11: "Store",
-        category_12: "Sale",
+        category_12: "Verkauf",
         add_to_cart: "In den Warenkorb",
         remove_from_cart: "Aus dem Warenkorb entfernen",
         empty_wishlist: "Die Wunschliste ist leer",

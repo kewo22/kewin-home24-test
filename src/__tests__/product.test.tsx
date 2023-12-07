@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-
-import { Article } from "../types";
+ 
+import { Article } from "../common/interfaces/article";
 
 import Product from "../common/ui/Product";
 

@@ -8,14 +8,14 @@ export default function WishList() {
 
   if (!app.wishList.length) {
     return (
-      <section className="flex items-center justify-center mt-52 text-center">
+      <section className="flex items-center justify-center mt-52 text-center" data-testid="empty-wishlist-section">
         <Typography text="empty_wishlist" variant="xl"></Typography>
       </section>
     );
   }
 
   return (
-    <section className="py-20 px-10 lg:px-12 xl:px-20 2xl:px-44">
+    <section className="py-20 px-10 lg:px-12 xl:px-20 2xl:px-44" data-testid="wishlist-section">
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-10">
         {app.wishList?.map((wishList) => {
           return (
