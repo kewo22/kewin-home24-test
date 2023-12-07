@@ -1,19 +1,15 @@
 import React from "react";
 
-import { Article } from "../interfaces/article";
+import { ProductsProps } from "../interfaces/props/product-props";
+
 import Product from "./Product";
 import ProductLoader from "./ProductLoader";
-
-interface ProductsProps {
-  articles: Article[];
-  isLoading: boolean;
-}
 
 export default function Products(props: ProductsProps) {
   const { articles, isLoading } = props;
 
   if (isLoading) {
-    return <ProductLoader />
+    return <ProductLoader />;
   }
 
   return (

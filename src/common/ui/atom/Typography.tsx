@@ -3,14 +3,8 @@ import React, { ElementType, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
-type Variant = "span" | "lg" | "xl";
+import { TypographyProps, Variant } from "../../interfaces/props/typography-props";
 
-interface TypographyProps {
-  text: string;
-  variant?: Variant;
-  className?: string;
-  ref?: any;
-}
 
 const tags: Record<Variant, ElementType> = {
   span: "span",

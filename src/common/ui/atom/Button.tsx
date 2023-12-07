@@ -1,16 +1,8 @@
 import React, { forwardRef } from "react";
+
 import { twMerge } from "tailwind-merge";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-  customClass?: string;
-  size?: "xs" | "sm" | "md" | "lg";
-  variant?: "outline" | "primary";
-  testid?: string;
-  isDisabled?: boolean;
-  onClick?: () => void;
-}
+import { ButtonProps } from "../../interfaces/props/button-props";
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref) => {
